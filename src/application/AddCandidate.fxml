@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="321.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddCandidateController">
+   <children>
+      <Text layoutX="28.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Your Name:" />
+      <TextField layoutX="140.0" layoutY="37.0" />
+      <TextField layoutX="78.0" layoutY="83.0" prefHeight="25.0" prefWidth="211.0" />
+      <Text layoutX="28.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" />
+      <Text layoutX="28.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age:" />
+      <TextField layoutX="66.0" layoutY="128.0" prefHeight="25.0" prefWidth="225.0" />
+      <Text layoutX="27.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNIC:" wrappingWidth="33.0" />
+      <TextField layoutX="66.0" layoutY="171.0" prefHeight="25.0" prefWidth="225.0" />
+      <Button layoutX="140.0" layoutY="219.0" mnemonicParsing="false" text="Submit" />
+      <Button fx:id="back" layoutX="1.0" mnemonicParsing="false" onAction="#back" text="Back" />
+   </children>
+</AnchorPane>
