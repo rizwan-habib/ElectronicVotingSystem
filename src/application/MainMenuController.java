@@ -21,7 +21,11 @@ public class MainMenuController {
     private Button castVote;
     @FXML
     private Button addParty;
-    
+
+    @FXML
+    private Button showRes;
+    @FXML
+    private Button Percentage;
     @FXML
     void CastAVote(ActionEvent event) throws Exception {
     	
@@ -60,6 +64,23 @@ public class MainMenuController {
 //    	PersistenceHandler db=new MySQLDBHandler();
 //    	db.save();
 //    	System.out.print("Hello2");
+    }
+
+    @FXML
+    void percentage(ActionEvent event) throws IOException {
+    	AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("percentage.fxml"));
+		Scene scene = new Scene(root,320,275);
+		Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		primaryStage.setScene(scene);
+		primaryStage.show();
+    }
+    @FXML
+    void showResults(ActionEvent event) throws IOException {
+    	AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("winner.fxml"));
+		Scene scene = new Scene(root,320,275);
+		Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		primaryStage.setScene(scene);
+		primaryStage.show();
     }
     @FXML
     public void addParty(ActionEvent event) throws IOException {

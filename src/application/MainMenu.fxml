@@ -12,8 +12,8 @@
       <Button fx:id="castVote" mnemonicParsing="false" onAction="#CastAVote" prefHeight="25.0" prefWidth="440.0" text="Cast a Vote" />
       <Button fx:id="addParty" mnemonicParsing="false" onAction="#addParty" prefHeight="25.0" prefWidth="675.0" text="Add Party" />
       <Button fx:id="candidate" mnemonicParsing="false" onAction="#AddCandidate" prefHeight="25.0" prefWidth="639.0" text="Add Candidate" />
-      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="495.0" text="Percentage of votes received by each party" />
-      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="579.0" text="Show Results" />
+      <Button fx:id="Percentage" mnemonicParsing="false" onAction="#percentage" prefHeight="25.0" prefWidth="495.0" text="Percentage of votes received by each party" />
+      <Button fx:id="showRes" mnemonicParsing="false" onAction="#showResults" prefHeight="25.0" prefWidth="579.0" text="Show Results" />
       <Button fx:id="HowTo" mnemonicParsing="false" onAction="#HowToVote" prefHeight="25.0" prefWidth="287.0" text="How to vote." />
    </children>
 </VBox>

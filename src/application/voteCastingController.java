@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,20 +14,22 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class voteCastingController {
 	@FXML
-    private MenuButton candidates;
+    private TextField candidatename;
+
     @FXML
     private Button back;
+
+    @FXML
+    private Button voted;
+
     @FXML
     private TextField cnic;
-    @FXML
-    private MenuItem menu2;
-    @FXML
-    private MenuItem menu1;
+    
     @FXML
     private Button voteCasted;
     @FXML
@@ -37,17 +40,42 @@ public class voteCastingController {
     	if(c.isEmpty()) {
     		return;
     	}
+    	String p=candidatename.getText();
+    	if(p.isEmpty()) {
+    		return;
+    	}
     	try {
             int d = Integer.parseInt(c);
         } catch (NumberFormatException nfe) {
             return;
         }
     	VotingHandler v=new VotingHandler();
-    	boolean flag=v.verifyVoter(Integer.parseInt(c));
+    	boolean flag=v.verifyVoter(Integer.parseInt(c))&&v.verifyCandidate(p);
     	if (flag) {
+
+    		
 //    		System.exit(0);
-    		//vote casting
-    		v.voteCast(c);
+    		//vote casting 
+    		try {
+    			v.voteCast(c,p);
+			} catch (Exception e) {
+				// TODO: handle exception
+				return;
+			}
+    		VBox root;
+			try {
+				root = (VBox)FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+				Scene scene = new Scene(root,290,150);
+	    		Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	    		primaryStage.setScene(scene);
+	    		primaryStage.show();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	
+    		
+    		
 		}
     }
 
@@ -58,8 +86,10 @@ public class voteCastingController {
 //    }
     public void initialize() {
 
-        
-        int size = 5;
+        VotingHandler v1=new VotingHandler();
+        ArrayList<Candidate> cns=new ArrayList<Candidate>();
+        cns=v1.getCandidates();
+        int size = cns.size();
         //Node[] n = new Node[size];
         for (int i = 0; i < size; i++) {
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("Bloc.fxml"));
@@ -69,7 +99,8 @@ public class voteCastingController {
             //controller.setButtonInst(ecoles.get(i));
             //Box.getChildren().add(n[i]);
 
-            Button btn = new Button("button");
+            Text btn = new Text();
+            btn.setText(cns.get(i).getName()+" ("+cns.get(i).getParty().getName()+")");
             Box.add(btn, 0, i); // Button is added to next row every time.
         }
 
